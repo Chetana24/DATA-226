@@ -21,13 +21,6 @@ def return_snowflake_conn():
     return conn.cursor()
 
 
-
-# @task
-# def extract(url):
-#     f = requests.get(url)
-#     return (f.text)
-
-
 @task
 def extract(url):
   r = requests.get(url)
@@ -51,7 +44,7 @@ def load(cur, data, target_table):
     try:
         cur.execute("BEGIN;")
         cur.execute(f"""CREATE OR REPLACE TABLE {target_table} (OPEN FLOAT,HIGH FLOAT,LOW FLOAT,CLOSE FLOAT,VOLUME FLOAT,DATE date,SYMBOL VARCHAR(10), PRIMARY KEY(DATE, SYMBOL));""")
-        #cur.execute(f"""CREATE OR REPLACE TABLE {staging_table} (OPEN FLOAT,HIGH FLOAT,LOW FLOAT,CLOSE FLOAT,VOLUME FLOAT,DATE date,SYMBOL VARCHAR(10), PRIMARY KEY(DATE, SYMBOL));""")
+        cur.execute(f"""CREATE OR REPLACE TABLE {staging_table} (OPEN FLOAT,HIGH FLOAT,LOW FLOAT,CLOSE FLOAT,VOLUME FLOAT,DATE date,SYMBOL VARCHAR(10), PRIMARY KEY(DATE, SYMBOL));""")
         for r in data:
             open = r["1. open"]
             high = r["2. high"]
