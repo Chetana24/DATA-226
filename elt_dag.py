@@ -54,7 +54,7 @@ def run_ctas(table, select_sql, primary_key=None):
                 print("!!!!!!!!!!!!!!")
                 raise Exception(f"Primary key uniqueness failed: {result}")
         
-        # Duplicate check: Total row count vs distinct row count
+        # Duplicate check
         logging.info("Running duplicate check on analytics.session_summary")
         
         # Query for total row count
