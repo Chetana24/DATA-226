@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: dev  
+    schema: raw_data
+    description: "Schema which stores raw tables for ETL"
+    tables:
+      - name: user_session_channel
+        description: "Session data including userId, sessionId, and channel"
+      - name: session_timestamp
+        description: "Session data including timestamp"

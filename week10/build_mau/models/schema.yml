@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: session_summary
+    description: "Summary of user sessions with duration and channel information."
+    columns:
+      - name: session_id
+        description: "Unique session identifier."
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Unique user identifier."
+      - name: channel
+        description: "Channel through which the user joined the session."
+      - name: duration_seconds
+        description: "Duration of the session in seconds."
